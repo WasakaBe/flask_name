@@ -15,16 +15,84 @@ def index():
             @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
             body {
-                background: linear-gradient(135deg, #1f1c2c, #928dab);
-                color: #e0e0e0;
+                margin: 0;
+                padding: 0;
                 font-family: 'Orbitron', sans-serif;
+                overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 height: 100vh;
-                margin: 0;
+                color: #e0e0e0;
+                background: black;
+            }
+
+            .background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
                 overflow: hidden;
+                z-index: -1;
+            }
+
+            .background .circle {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                animation: animate 10s linear infinite;
+                bottom: -150px;
+            }
+
+            .background .circle:nth-child(1) {
+                width: 60px;
+                height: 60px;
+                left: 25%;
+                animation-duration: 18s;
+                animation-delay: 0s;
+            }
+
+            .background .circle:nth-child(2) {
+                width: 100px;
+                height: 100px;
+                left: 10%;
+                animation-duration: 15s;
+                animation-delay: 2s;
+            }
+
+            .background .circle:nth-child(3) {
+                width: 80px;
+                height: 80px;
+                left: 70%;
+                animation-duration: 12s;
+                animation-delay: 4s;
+            }
+
+            .background .circle:nth-child(4) {
+                width: 120px;
+                height: 120px;
+                left: 40%;
+                animation-duration: 22s;
+                animation-delay: 0s;
+            }
+
+            .background .circle:nth-child(5) {
+                width: 150px;
+                height: 150px;
+                left: 65%;
+                animation-duration: 20s;
+                animation-delay: 2s;
+            }
+
+            @keyframes animate {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-1000px) rotate(720deg);
+                    opacity: 0;
+                }
             }
 
             .container {
@@ -35,6 +103,8 @@ def index():
                 box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 25px rgba(0, 255, 255, 0.3), 0 0 35px rgba(0, 255, 255, 0.2);
                 animation: glow 2s infinite alternate;
                 margin-bottom: 2rem;
+                position: relative;
+                z-index: 1;
             }
 
             @keyframes glow {
@@ -74,6 +144,8 @@ def index():
                 box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 25px rgba(0, 255, 255, 0.3), 0 0 35px rgba(0, 255, 255, 0.2);
                 width: 300px;
                 text-align: left;
+                position: relative;
+                z-index: 1;
             }
 
             .form-container input, .form-container button {
@@ -110,6 +182,13 @@ def index():
         </style>
     </head>
     <body>
+        <div class="background">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
         <div class="container">
             <h1>Perfil Estudiantil</h1>
             <div class="image-container">
@@ -167,7 +246,7 @@ def submit():
         <title>Datos Enviados</title>
         <style>
             body {{
-                background: linear-gradient(135deg, #1f1c2c, #928dab);
+                background: black;
                 color: #e0e0e0;
                 font-family: 'Orbitron', sans-serif;
                 display: flex;
