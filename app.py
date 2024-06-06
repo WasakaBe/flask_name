@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -105,6 +105,7 @@ def index():
                 height: 100px;
                 border-radius: 50%;
                 box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+                object-fit: cover;
             }
         </style>
     </head>
@@ -112,7 +113,7 @@ def index():
         <div class="container">
             <h1>Perfil Estudiantil</h1>
             <div class="image-container">
-                <img src="https://via.placeholder.com/100" alt="Profile Image">
+                <img src="/static/imagen.jpg" alt="Profile Image">
             </div>
             <p id="fixed-text">Soy</p>
             <p id="changing-text"></p>
@@ -147,6 +148,10 @@ def index():
     </body>
     </html>
     '''
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
 
 @app.route('/submit', methods=['POST'])
 def submit():
