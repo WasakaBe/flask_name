@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import logging
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Configurar el registro
 logging.basicConfig(level=logging.DEBUG)
@@ -14,7 +14,7 @@ app.logger.debug('Modelo cargado correctamente.')
 
 @app.route('/')
 def home():
-    return render_template('formulario.html')
+    return render_template('templates/formulario.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -37,5 +37,5 @@ def predict():
         app.logger.error(f'Error en la predicción: {str(e)}')
         return jsonify({'error': str(e)}), 400
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
